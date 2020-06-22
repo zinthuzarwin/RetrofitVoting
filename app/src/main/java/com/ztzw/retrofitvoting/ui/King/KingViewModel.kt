@@ -9,5 +9,5 @@ import com.ztzw.retrofitvoting.model.KingItem
 class KingViewModel : ViewModel() {
 
     var kingList: MutableLiveData<List<King>> = MutableLiveData()
-    var kingApi =
+
 }
