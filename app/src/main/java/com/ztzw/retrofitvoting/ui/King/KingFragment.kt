@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ztzw.retrofitvoting.R
 
-class KingFragment : Fragment() {
+class KingFragment : Fragment(){
 
-    private lateinit var homeViewModel: KingViewModel
+    private lateinit var kingViewModel: KingViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
+        kingViewModel =
                 ViewModelProviders.of(this).get(KingViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_king, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        kingViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

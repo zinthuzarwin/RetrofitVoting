@@ -3,11 +3,11 @@ package com.ztzw.retrofitvoting.ui.King
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ztzw.retrofitvoting.model.King
+import com.ztzw.retrofitvoting.model.KingItem
 
 class KingViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    var kingList: MutableLiveData<List<King>> = MutableLiveData()
+    var kingApi =
 }
