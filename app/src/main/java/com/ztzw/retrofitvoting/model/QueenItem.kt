@@ -1,7 +1,7 @@
 package com.ztzw.retrofitvoting.model
 
 data class QueenItem(
-    val `class`: String,
+    val classRoom: String,
     val id: String,
     val img_url: String,
     val name: String,
