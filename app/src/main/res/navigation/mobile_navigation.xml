@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.ztzw.retrofitvoting.ui.home.HomeFragment"
+        android:name="com.ztzw.retrofitvoting.ui.King.KingFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_king" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.ztzw.retrofitvoting.ui.gallery.GalleryFragment"
+        android:name="com.ztzw.retrofitvoting.ui.Queen.QueenFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_queen" />
 
     <fragment
         android:id="@+id/nav_slideshow"
