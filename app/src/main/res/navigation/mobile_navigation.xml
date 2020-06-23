@@ -9,17 +9,28 @@
         android:id="@+id/nav_home"
         android:name="com.ztzw.retrofitvoting.ui.King.KingFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_king" />
+        tools:layout="@layout/fragment_king" >
+        <action
+            android:id="@+id/action_nav_home_to_voteFragment"
+            app:destination="@id/voteFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.ztzw.retrofitvoting.ui.Queen.QueenFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_queen" />
+        tools:layout="@layout/fragment_queen" >
+        <action
+            android:id="@+id/action_nav_gallery_to_voteFragment"
+            app:destination="@id/voteFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.ztzw.retrofitvoting.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/voteFragment"
+        android:name="com.ztzw.retrofitvoting.ui.VoteFragment"
+        android:label="VoteFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.ztzw.retrofitvoting.model.UserItem" />
+    </fragment>
 </navigation>

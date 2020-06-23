@@ -1,18 +1,16 @@
 package com.ztzw.retrofitvoting.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.ztzw.retrofitvoting.R
-import com.ztzw.retrofitvoting.model.QueenItem
-import kotlinx.android.synthetic.main.king_item.view.*
+import com.ztzw.retrofitvoting.model.UserItem
 import kotlinx.android.synthetic.main.queen_item.view.*
 
 
-class QueenAdapter(var queenList: List<QueenItem>, context: Context) : RecyclerView.Adapter<QueenAdapter.QueenViewHolder>() {
+class QueenAdapter(var queenList: List<UserItem> = ArrayList()) : RecyclerView.Adapter<QueenAdapter.QueenViewHolder>() {
 
     var mClickListener: ClickListener? = null
 
@@ -24,22 +22,23 @@ class QueenAdapter(var queenList: List<QueenItem>, context: Context) : RecyclerV
 
     inner class QueenViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
-        private lateinit var queen: QueenItem
+        private lateinit var queen: UserItem
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        fun bindPerson(queenItem: QueenItem) {
+        fun bindPerson(queenItem: UserItem) {
             this.queen = queenItem
-            itemView.kingID.text = queenItem.id
+            itemView.queenID.text = queenItem.id
             Picasso.get()
                 .load(queenItem.img_url)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.loading)
                 .into(itemView.queenImage)
 
-            itemView.queenClassRoom.text = queenItem.classRoom
+            itemView.queenClassRoom.text = queenItem.`class`
             itemView.queenName.text = queenItem.name
+
         }
 
         override fun onClick(v: View?) {
@@ -63,7 +62,11 @@ class QueenAdapter(var queenList: List<QueenItem>, context: Context) : RecyclerV
     }
 
     interface ClickListener {
-        fun onClick(queenItem: QueenItem)
+        fun onClick(queenItem: UserItem)
     }
 
+    fun updateResultList(resultList: List<UserItem>) {
+        this.queenList = resultList
+        notifyDataSetChanged()
+    }
 }

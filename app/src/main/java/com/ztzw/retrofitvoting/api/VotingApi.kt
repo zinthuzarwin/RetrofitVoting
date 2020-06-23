@@ -1,8 +1,6 @@
 package com.ztzw.retrofitvoting.api
 
-import com.ztzw.retrofitvoting.model.KingItem
-import com.ztzw.retrofitvoting.model.QueenItem
-import com.ztzw.retrofitvoting.model.VoteResponse
+import com.ztzw.retrofitvoting.model.*
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,9 +23,9 @@ class VotingApi {
         apiInterface = retrofit.create(ApiInterface::class.java)
     }
 
-    fun getKing() : Call<List<KingItem>> = apiInterface.getKing()
+    fun getKing() : Call<User> = apiInterface.getKing()
 
-    fun getQueen() : Call<List<QueenItem>> = apiInterface.getQueen()
+    fun getQueen() : Call<User> = apiInterface.getQueen()
 
     fun voteKing(code: String, king_id: String) : Call<VoteResponse> = apiInterface.voteking(code, king_id)
 

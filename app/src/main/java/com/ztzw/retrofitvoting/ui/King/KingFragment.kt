@@ -4,16 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ztzw.retrofitvoting.R
 import com.ztzw.retrofitvoting.adapter.KingAdapter
-import com.ztzw.retrofitvoting.model.King
-import com.ztzw.retrofitvoting.model.KingItem
+import com.ztzw.retrofitvoting.model.UserItem
 import kotlinx.android.synthetic.main.fragment_king.*
 
 class KingFragment : Fragment(), KingAdapter.ClickListener {
@@ -53,12 +52,15 @@ class KingFragment : Fragment(), KingAdapter.ClickListener {
 
         kingViewModel.kingList.observe(viewLifecycleOwner,
             Observer { myResult ->
-                kingAdapter.updateResultList(myResult.results)
+                kingAdapter.updateResultList(myResult)
             })
     }
 
-    override fun onClick(kingItem: KingItem) {
-        TODO("Not yet implemented")
-    }
+    override fun onClick(kingItem: UserItem) {
 
+        Toast.makeText(context, "${kingItem.name}", Toast.LENGTH_LONG).show()
+        var king = kingItem
+        var action = KingFragmentDirections.actionNavHomeToVoteFragment(king)
+        findNavController().navigate(action)
+    }
 }

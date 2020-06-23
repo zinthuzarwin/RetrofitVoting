@@ -1,3 +1,3 @@
 package com.ztzw.retrofitvoting.model
 
-class Queen : ArrayList<QueenItem>()
+class User : ArrayList<UserItem>()

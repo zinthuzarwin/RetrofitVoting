@@ -1,8 +1,6 @@
 package com.ztzw.retrofitvoting.api
 
-import com.ztzw.retrofitvoting.model.KingItem
-import com.ztzw.retrofitvoting.model.QueenItem
-import com.ztzw.retrofitvoting.model.VoteResponse
+import com.ztzw.retrofitvoting.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -24,9 +22,9 @@ interface ApiInterface {
     ) : Call<VoteResponse>
 
     @GET(value = "king")
-    fun getKing(): Call<List<KingItem>>
+    fun getKing(): Call<User>
 
     @GET(value = "queen")
-    fun getQueen(): Call<List<QueenItem>>
+    fun getQueen(): Call<User>
 
 }

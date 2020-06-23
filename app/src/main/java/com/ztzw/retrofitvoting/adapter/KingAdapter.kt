@@ -1,17 +1,17 @@
 package com.ztzw.retrofitvoting.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.ztzw.retrofitvoting.R
-import com.ztzw.retrofitvoting.model.KingItem
-import com.ztzw.retrofitvoting.model.QueenItem
+import com.ztzw.retrofitvoting.model.UserItem
 import kotlinx.android.synthetic.main.king_item.view.*
 
-class KingAdapter(var kingList: List<KingItem> = ArrayList()) : RecyclerView.Adapter<KingAdapter.KingViewHolder>() {
+class KingAdapter(var kingList: List<UserItem> = ArrayList()) : RecyclerView.Adapter<KingAdapter.KingViewHolder>() {
 
     var mClickListener: ClickListener? = null
 
@@ -22,22 +22,25 @@ class KingAdapter(var kingList: List<KingItem> = ArrayList()) : RecyclerView.Ada
 
     inner class KingViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
-        private lateinit var king: KingItem
+        private lateinit var king: UserItem
 
         init {
             itemView.setOnClickListener(this)
         }
 
-        fun bindKing(kingItem: KingItem) {
+        fun bindKing(kingItem: UserItem) {
             this.king = kingItem
             itemView.kingID.text = kingItem.id
             Picasso.get()
                 .load(kingItem.img_url)
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.loading)
                 .into(itemView.kingImage)
 
-            itemView.kingClassRoom.text = kingItem.classRoom
+            itemView.kingClassRoom.text = kingItem.`class`
             itemView.kingName.text = kingItem.name
+
+            Log.d("Classroom Checked",itemView.kingClassRoom.toString())
+
         }
 
         override fun onClick(v: View?) {
@@ -57,7 +60,7 @@ class KingAdapter(var kingList: List<KingItem> = ArrayList()) : RecyclerView.Ada
     }
 
     interface ClickListener {
-        fun onClick(kingItem: KingItem)
+        fun onClick(kingItem: UserItem)
     }
 
     override fun onBindViewHolder(holder: KingViewHolder, position: Int) {
@@ -65,7 +68,7 @@ class KingAdapter(var kingList: List<KingItem> = ArrayList()) : RecyclerView.Ada
     }
 
 
-    fun updateResultList(resultList: List<KingItem>) {
+    fun updateResultList(resultList: List<UserItem>) {
         this.kingList = resultList
         notifyDataSetChanged()
     }
